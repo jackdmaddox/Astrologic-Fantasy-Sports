@@ -165,6 +165,8 @@ function whatsYourSign(month, day) {
 // let inputSunSign = (whatsYourSign(1,1));
 
 function getPlayerSign(){
+    let loader = document.getElementById('loader');
+        loader.style.display = 'block';
     getWiki('http://en.wikipedia.org/w/api.php?action=parse&page=Al_Horford&format=xml&prop=wikitext')
     .then((data) => {
         var birthday = findBirthday(data);
@@ -180,6 +182,7 @@ function getPlayerSign(){
             addSunsign(response.sunsign);
             addMood(response.meta.mood);
             addKeywords(response.meta.keywords);
+            loader.style.display = 'none';
         })
     })
 }
